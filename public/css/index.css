@@ -12,6 +12,7 @@ body{
     font-size: 1.3rem;
     font-weight: 500;
     line-height: 1.5;
+    background-color: #191d28;
 }
 header{
     height:100px !important;

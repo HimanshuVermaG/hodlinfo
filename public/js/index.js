@@ -33,7 +33,7 @@ request.onload = function () {
             </tr>
             `
             str2+=`
-            <li><a class="dropdown-item" href="#">${base_unit}</a></li>
+            <li><a class="dropdown-item" href="#">${base_unit.toUpperCase()}</a></li>
             `
         }
         content.innerHTML += str
