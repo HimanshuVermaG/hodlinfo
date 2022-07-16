@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>JavaScript Table Filter Search - www.pakainfo.com</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        h3 span {
+            font-size: 22px;
+        }
+        h3 input.search-input {
+            width: 300px;
+            margin-left: auto;
+            float: right
+        }
+        .mt32 {
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body class="mt32">
+    <div class="container">
+        <h3>
+            <span>JavaScript Filter Table Data</span>
+            <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+        </h3>
+        <table class="table table-striped mt32 customers-list">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Postal Code</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>virat Kohali</td>
+                    <td>virat.Kohali@pakainfo.com</td>
+                    <td>985698</td>
+                    <td>Rajestan</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Rohit Sharma</td>
+                    <td>rohitsharma@pakainfo.com</td>
+                    <td>78548</td>
+                    <td>Junagdha</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Sachin Tendulkar</td>
+                    <td>sachintendulakar@yahoo.com</td>
+                    <td>59868</td>
+                    <td>Baroda</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Malri Shivalik</td>
+                    <td>maklik.1992@pakainfo.com</td>
+                    <td>WA1 1DP</td>
+                    <td>Ahemdabad</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Chaggan Dhameliya</td>
+                    <td>dhameliya@outlook.com</td>
+                    <td>S-985 55</td>
+                    <td>Surat</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Sejal Ramani</td>
+                    <td>ramani.sejal@pakainfo.com</td>
+                    <td>985698</td>
+                    <td>Kalavad</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Fuller Andrew</td>
+                    <td>harbhanjam.985@yahoo.com</td>
+                    <td>E89 692</td>
+                    <td>Bhavanagar</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>4cgandhi free</td>
+                    <td>4cgandhi.j@pakainfo.com</td>
+                    <td>G7F 0K8</td>
+                    <td>Rajkot</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        (function(document) {
+            'use strict';
+
+            var TableFilter = (function(myArray) {
+                var search_input;
+
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function(table) {
+                        myArray.forEach.call(table.tBodies, function(tbody) {
+                            myArray.forEach.call(tbody.rows, function(row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
+
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('search-input');
+                        myArray.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
+    </script>
+</body>
+</html>
